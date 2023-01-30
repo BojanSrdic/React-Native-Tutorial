@@ -5,10 +5,10 @@ import { StatusBar } from "expo-status-bar";
 
 const image1 = require('../../assets/post1.jpeg');
 
-const ITEM_SIZE = 200 //size of home card
+const ITEM_SIZE = 175
 
 const FlatListAnimation = () => {
-    const [scrolly] = useState(new Animated.Value(0));
+    const scrolly = React.useRef(new Animated.Value(0)).current;
 
     const onCardScroll = Animated.event(
         [{ nativeEvent: { contentOffset: { y: scrolly } } }],
@@ -16,8 +16,8 @@ const FlatListAnimation = () => {
     )
 
     const renderCard = ({ item, index } : {item: any, index: number}) => {
-        const inputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 3)]
-        const opacityinputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 1)]
+        const inputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 2)]
+        const opacityinputRange = [-1, 0, ITEM_SIZE * index, ITEM_SIZE * (index + 0.8)]
         const scale = scrolly.interpolate({
             inputRange,
             outputRange: [1, 1, 1, 0]
@@ -37,8 +37,8 @@ const FlatListAnimation = () => {
 
     return (
         <View style={styles.container}>
-            <StatusBar style="light" />
-            <Animated.FlatList onScroll={onCardScroll} style={{ paddingTop: 50 }} data={seedDataHomeCard} renderItem={renderCard} 
+            <StatusBar hidden style="light" />
+            <Animated.FlatList onScroll={onCardScroll} style={{ paddingTop: 20 }} data={seedDataHomeCard} renderItem={renderCard} 
                 keyExtractor={(data) => data.id.toString()} showsVerticalScrollIndicator={false} />
         </View>
     );
@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
     cardContainer: {
         width: deviceWidth - offset,
         height: height,
-        backgroundColor: '#a29bfe',
         borderRadius: radius,
         shadowColor: '#000',
         shadowOffset: {
@@ -106,6 +105,46 @@ const seedDataHomeCard = [
         imageURI: image1,
         title: 'Disanje',
     }, {
+        id: 2,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 3,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 4,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 5,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 6,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 7,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 8,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 9,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 10,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
+        id: 11,
+        imageURI: image1,
+        title: 'Disanje',
+    }, {
         id: 12,
         imageURI: image1,
         title: 'Disanje',
@@ -123,46 +162,6 @@ const seedDataHomeCard = [
         title: 'Disanje',
     }, {
         id: 16,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 17,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 18,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 19,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 10,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 11,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 21,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 31,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 4,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 514,
-        imageURI: image1,
-        title: 'Disanje',
-    }, {
-        id: 61,
         imageURI: image1,
         title: 'Disanje',
     },
