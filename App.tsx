@@ -6,18 +6,19 @@ import FlatListAnimation from './src/FlatList-Animation/FlatListAnimation';
 import SplashScreenAnimation from './src/Splash-Screen-Animation/SplashScreenAnimation';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-const imageURI = require('./assets/post1.jpeg');
-const title = 'aaaaaaaaaaaaaaa';
-
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <SplashScreenAnimation/>
-    </SafeAreaProvider>
+    <FlatListAnimation/>
   );
 }
 
 //  <FlatListAnimation/>
+
+/*
+    <SafeAreaProvider>
+      <SplashScreenAnimation/>
+    </SafeAreaProvider>
+*/
 
 
 

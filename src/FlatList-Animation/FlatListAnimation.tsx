@@ -1,11 +1,13 @@
 import React from "react"
-import { useState } from "react";
-import { View, Text, StyleSheet, Dimensions, Image, FlatList, Animated } from "react-native"
+import {View, Text, StyleSheet, Dimensions, Image, Animated} from "react-native"
 import { StatusBar } from "expo-status-bar";
+import CardItem from "./CardItem";
 
 const image1 = require('../../assets/post1.jpeg');
 
-const ITEM_SIZE = 175
+const DEVICEWIDTH = Math.round(Dimensions.get('window').width)
+const HEIGHT = 150;
+const ITEM_SIZE = HEIGHT + 25;
 
 const FlatListAnimation = () => {
     const scrolly = React.useRef(new Animated.Value(0)).current;
@@ -27,10 +29,8 @@ const FlatListAnimation = () => {
             outputRange: [1, 1, 1, 0]
         })
         return (
-            <Animated.View style={[styles.container1, { transform: [{ scale }] }, { opacity }]}>
-                <View style={styles.cardContainer}>
-                    <Image style={styles.imageStyle} source={require('../../assets/post1.jpeg')} />
-                </View>
+            <Animated.View style={[styles.cardItemAnimatedView, { transform: [{ scale }] }, { opacity }]}>
+                <CardItem key={item.id} imageURI={item.imageURI} title={item.title} />
             </Animated.View>
         );
     }
@@ -44,60 +44,16 @@ const FlatListAnimation = () => {
     );
 }
 
-// <StatusBar style="auto" />
-/* <HomeCard key={item.id} imageURI={item.imageURI} title={item.title} scrolly={scrolly}/> */
-/* <CardItem key={item.id} imageURI={item.imageURI} title={item.title} transformprop={scale} opacityprop={opacity} /> */
-
-const deviceWidth = Math.round(Dimensions.get('window').width)
-const radius = 20;
-const offset = 50;
-const height = 150;
-
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         backgroundColor: '#525252',
-        alignItems: 'center',
     },
-    footerStyle: {
-        backgroundColor: '#7977979',
-        paddingTop: 70,
-    },
-    container1: {
-        width: deviceWidth - 20,
+    cardItemAnimatedView: {
+        width: DEVICEWIDTH,
         alignItems: 'center',
         marginTop: 25,
     },
-    cardContainer: {
-        width: deviceWidth - offset,
-        height: height,
-        borderRadius: radius,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 5,
-            height: 5,
-        },
-        shadowOpacity: 0.75,
-        shadowRadius: 5,
-        elevation: 9,
-    },
-    imageStyle: {
-        height: height,
-        width: deviceWidth - offset,
-        borderRadius: radius,
-        opacity: 0.9,
-    },
-    textStyle: {
-        position: 'absolute',
-        fontSize: 20,
-        fontWeight: '800',
-        alignSelf: 'center',
-        textAlign: 'center',
-        top: '40%',
-    }
 });
-
-// Seed data
 
 const seedDataHomeCard = [
     {

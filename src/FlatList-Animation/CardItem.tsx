@@ -1,6 +1,11 @@
 import React from "react"
 import {View, Text, StyleSheet, Dimensions, Image, Animated} from "react-native"
 
+const DEVICEWIDTH = Math.round(Dimensions.get('window').width)
+const RADIUS = 20;
+const OFFSET = 50;
+const HEIGHT = 150;
+
 type HomeCardProps = {
     imageURI: any;
     title: string;
@@ -9,10 +14,8 @@ type HomeCardProps = {
 const CardItem = ({imageURI, title}: HomeCardProps) => {
     return (
         <View style = {styles.container}>
-            <View style = {styles.cardContainer}>
-                <Image style = {styles.imageStyle} source={imageURI} />
-                <Text style={styles.textStyle}>{title}</Text>
-            </View>
+            <Image style = {styles.imageStyle} source={imageURI} />
+            <Text style={styles.textStyle}>{title}</Text>
         </View>
     );
 }
@@ -25,17 +28,10 @@ const height = 150;
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: "yellow",
-        alignItems: 'center',
-        marginTop: 25,
-    },
-    cardContainer: { 
-    
-        width: deviceWidth - offset, 
-        height: height,
-        backgroundColor: '#a29bfe',
-        borderRadius: radius,
-        shadowColor: '#000', 
+        width: DEVICEWIDTH - OFFSET,
+        height: HEIGHT,
+        borderRadius: RADIUS,
+        shadowColor: '#000',
         shadowOffset: {
             width: 5,
             height: 5,
@@ -44,19 +40,19 @@ const styles = StyleSheet.create({
         shadowRadius: 5,
         elevation: 9,
     },
-    imageStyle:{
-        height: height,
-        width: deviceWidth - offset,
-        borderRadius: radius,
+    imageStyle: {
+        height: HEIGHT,
+        width: DEVICEWIDTH - OFFSET,
+        borderRadius: RADIUS,
         opacity: 0.9,
     },
-    textStyle:{
+    textStyle: {
         position: 'absolute',
-        fontSize: 20, 
+        fontSize: 20,
         fontWeight: '800',
-        alignSelf: 'center', 
-        textAlign: 'center', 
-        top: '40%', 
+        alignSelf: 'center',
+        textAlign: 'center',
+        top: '40%',
     }
 });
 
